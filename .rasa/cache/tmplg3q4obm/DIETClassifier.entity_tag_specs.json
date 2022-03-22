@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-LiquidityRisk",
+      "2": "I-LiquidityRisk",
+      "3": "L-LiquidityRisk",
+      "4": "U-LiquidityRisk",
+      "5": "B-MarketRisk",
+      "6": "I-MarketRisk",
+      "7": "L-MarketRisk",
+      "8": "U-MarketRisk",
+      "9": "B-MutualFunds",
+      "10": "I-MutualFunds",
+      "11": "L-MutualFunds",
+      "12": "U-MutualFunds",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-LiquidityRisk": 1,
+      "I-LiquidityRisk": 2,
+      "L-LiquidityRisk": 3,
+      "U-LiquidityRisk": 4,
+      "B-MarketRisk": 5,
+      "I-MarketRisk": 6,
+      "L-MarketRisk": 7,
+      "U-MarketRisk": 8,
+      "B-MutualFunds": 9,
+      "I-MutualFunds": 10,
+      "L-MutualFunds": 11,
+      "U-MutualFunds": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]
