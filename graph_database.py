@@ -1,10 +1,15 @@
 import logging
+from tokenize import Name
 from typing import List, Dict, Any, Optional, Text
 
 from neo4j import GraphDatabase
+from pyrsistent import optional
 
 logger = logging.getLogger(__name__)
 
+NAME = "n4sch__name"
+COMMENT = "n4sch__comment"
+CLASS = "n4sch__Class"
 
 class KnowledgeBase(object):
     def get_entities(
@@ -44,11 +49,11 @@ class KnowledgeGraph(KnowledgeBase):
         self.uri = uri
         self.user = user
         self.password = password
-        self.attribute_mapping = {
-            "what is": "n4sch__comment",
-            "What is": "n4sch__comment",
-        }
-        self.entity_type_mapping = {"business model": "BusinessModel"}
+        # self.attribute_mapping = {
+        #     "what is": "n4sch__comment",
+        #     "What is": "n4sch__comment",
+        # }
+        # self.entity_type_mapping = {"business model": "BusinessModel"}
 
     def close(self):
         self.driver.close()
@@ -58,30 +63,14 @@ class KnowledgeGraph(KnowledgeBase):
         Converts a thing (a neo4j object) to a dict for easy retrieval of the thing's
         attributes.
         """
-        """
-        entity = {"id": thing.id, "type": thing.type().label()}
-        for each in thing.attributes():
-            entity[each.type().label()] = each.value()
-        return entity
-        """
-        type_ = ""
-        if "n4sch__Class" in thing.labels:
-            type_ = "Class"
-        elif "n4sch__Relationship" in thing.labels:
-            type_ = "Relationship"
-        elif "n4sch__SubClass" in thing.labels:
-            type_ = "SubClass"
-        elif "n4sch__Individual" in thing.labels:
-            type_ = "Individual"
-
-        entity = {"id": thing.id, "type": type_}
+        entity = {"id": thing.id, "type": list(thing.labels)[0]}
         for prop, val in thing.items():
             entity[prop] = val
         return entity
 
     def _relation_to_dict(self, rel):
         """
-        convert a given neo4j relationship object and convert it to a dict
+        convert a given neo4j relationship object to a dict for easy retrieval
         rel: relationship object
         """
 
@@ -92,7 +81,7 @@ class KnowledgeGraph(KnowledgeBase):
 
     def _execute_entity_query(self, query: Text) -> List[Dict[Text, Any]]:
         """
-        Executes a query that returns a list of entities with all their attributes.
+        Executes a query that returns a list of entities with all their attributes in dict form
         """
         with self.driver.session() as session:
             print("Executing Cypher Query: " + query)
@@ -116,11 +105,13 @@ class KnowledgeGraph(KnowledgeBase):
             return list(result_iter.single())
 
     def _execute_relation_query(
-        self, query: Text, relation_name: Text = ""
+        self, query: Text
     ) -> List[Dict[Text, Any]]:
         """
-        Execute a query that queries for a relation. All attributes of the relation and
-        all entities participating in the relation are part of the result.
+        Execute a query that retrives relationships. All attributes of the relation and
+        all entities participating in the relation are part of the result. The entities are represented
+        as start and end keys
+
         """
         with self.driver.session() as session:
             print("Executing Cypher Query: " + query)
@@ -162,93 +153,148 @@ class KnowledgeGraph(KnowledgeBase):
             """
         )
 
-    def get_direct_relation_of(self, entity_type: Text, entity: Text, rel_type: Text):
+    def get_direct_relation_of(self, entity_type: Text = "", rel_type: Text = "", attributes: Optional[Dict[Text, Text]] = None
+    ) -> List[Dict[Text, Any]]:
         """
-        Get the value of the given attribute for the provided entity.
-        :param entity_type: entity type of the class (can be any type in case of individuals)
-        :param entity: name of the entity
-        :param rel_type: name of the relationship (isA in case of individuals, and subclassof in case of subclass)
-        :return: the value of the attribute
+        Given a relationship and an entity, get all entities that have that relationship with the given
+        entity.
+        :param entity_type: entity type
+        :param attributes: any attributes of the entity (incl name)
+        :param rel_type: the type (name) of relationship
+        :return: list of entities (with all their attributes)
         """
-        return self._execute_entity_query(
-            f"""
-              match (a {{n4sch__name: "{entity}"}})-[r:{rel_type}]-(n)
-              return n
-            """
-        )
-
-    def get_entities(
-        self, entity_type: Text, attributes: Optional[Dict[Text, Text]] = None
-    ):
+        if rel_type:
+            rel_type = ':' + rel_type
+        if entity_type:
+            entity_type = ':' + entity_type
         attr = ""
         if attributes:
             attr = "{ "
             for key, value in attributes.items():
                 attr = f"{attr} {key}: '{value}'"
             attr = attr + " }"
-        print(attr)
         return self._execute_entity_query(
             f"""
-             match (n:{entity_type} {attr} ) return n 
+              match (a{entity_type} {attr})-[r{rel_type}]-(n)
+              return n
             """
         )
 
-    def get_all_relations(self, entity_type: Text, entity: Text):
+    def get_entities(
+        self, entity_type = "", attributes: Optional[Dict[Text, Text]] = None
+    ) -> List[Dict[Text, Any]]:
+        """
+        Given a relationship and an entity, get all entities that have that relationship with the given
+        entity.
+        :param entity_type: entity type
+        :param attributes: any attributes of the entity (incl name)
+        :param rel_type: the type (name) of relationship
+        :return: list of entities (with all their attributes)
+        """        
+        attr = ""
+        if entity_type:
+            entity_type = ':' + entity_type
+        if attributes:
+            attr = "{ "
+            for key, value in attributes.items():
+                attr = f"{attr} {key}: '{value}'"
+            attr = attr + " }"
+        return self._execute_entity_query(
+            f"""
+             match (n{entity_type} {attr} ) return n 
+            """
+        )
 
+    # def get_all_relations(self, entity_type: Text, entity: Text):
+
+    #     return self._execute_relation_query(
+    #         f"""
+    #           match (n:{entity_type} {{n4sch__name: "{entity}"}})-[r]-(m)
+    #           return *
+    #         """
+    #     )
+
+    def get_type(self, entity_name):
+
+        """
+        given an entity name, return type of the entity
+        """
+        entity = self.get_entities(attributes={NAME:entity_name})
+        return entity[0]["type"]
+
+    def get_sibling_entities(self, entity_type: Text = "", attributes: Optional[Dict[Text, Text]] = None):
+        """
+        given an entity type, or an attribute such as an entity's name, get all other entities of the
+        same type (sibings)
+        :param entity_type: entity type
+        :param attributes: any attributes of the entity (incl name)
+        return: list of entities of the same type as the given entity or entity type
+        """
+        
+        if entity_type:
+            sibling_entities = self.get_entities(entity_type)
+        else:
+            entity = self.get_entities(entity_type, attributes)
+            for ent in entity:
+                ent_type = ent["type"]
+                sibling_entities = self.get_entities(ent_type)
+        return sibling_entities
+
+    def get_relations(self, rel_type = "", entity_type = "", attributes: Optional[Dict[Text, Text]] = None 
+    ):
+        """
+        get relationships with start and end entities
+        :param rel_type: type of relationship
+        :param entity_type: type of one of the entities involved in the relationship
+        :param attributes: any attributes of the entity (incl name)
+        return: dictionary containing relationships with start and end keys representing the end nodes
+        of the relationship
+        """
+        if rel_type:
+            rel_type = ':' + rel_type
+        if entity_type:
+            entity_type = ':' + entity_type
+        attr = ""
+        if attributes:
+            attr = "{ "
+            for key, value in attributes.items():
+                attr = f"{attr} {key}: '{value}'"
+            attr = attr + " }"
         return self._execute_relation_query(
             f"""
-              match (n:{entity_type} {{n4sch__name: "{entity}"}})-[r]-(m)
+              match (n{entity_type} {attr})-[r{rel_type}]-(m)
               return *
             """
         )
 
-    def get_sibling_entities(self, entity_type: Text, entity: Text):
-        relations = self.get_all_relations(entity_type, entity)
-        siblings = {}
-        for rel in relations:
-            if rel["start"]["n4sch__name"] == entity:
-                siblings[rel["type"]] = self._execute_entity_query(
-                    f"""
-                            match (a {{n4sch__name: "{rel["end"]["n4sch__name"]}"}})<-[r:{rel["type"]}]-(n)
-                            return n
-                        """
-                )
-            else:
-                siblings[rel["type"]] = self._execute_entity_query(
-                    f"""
-                            match (a {{n4sch__name: "{rel["start"]["n4sch__name"]}"}})-[r:{rel["type"]}]->(n)
-                            return n
-                        """
-                )
-        return siblings
 
-    def map(self, mapping_type: Text, mapping_key: Text) -> Text:
-        """
-        Query the given mapping table for the provided key.
-        :param mapping_type: the name of the mapping table
-        :param mapping_key: the mapping key
-        :return: the mapping value
-        """
+    # def map(self, mapping_type: Text, mapping_key: Text) -> Text:
+    #     """
+    #     Query the given mapping table for the provided key.
+    #     :param mapping_type: the name of the mapping table
+    #     :param mapping_key: the mapping key
+    #     :return: the mapping value
+    #     """
 
-        if (
-            mapping_type == "attribute-mapping"
-            and mapping_key in self.attribute_mapping
-        ):
-            return self.attribute_mapping[mapping_key]
+    #     if (
+    #         mapping_type == "attribute-mapping"
+    #         and mapping_key in self.attribute_mapping
+    #     ):
+    #         return self.attribute_mapping[mapping_key]
 
-        if (
-            mapping_type == "entity-type-mapping"
-            and mapping_key in self.entity_type_mapping
-        ):
-            return self.entity_type_mapping[mapping_key]
+    #     if (
+    #         mapping_type == "entity-type-mapping"
+    #         and mapping_key in self.entity_type_mapping
+    #     ):
+    #         return self.entity_type_mapping[mapping_key]
 
 
-# if __name__ == "__main__":
-#     q = KnowledgeGraph(
-#         "neo4j+s://147e2688.databases.neo4j.io",
-#         "neo4j",
-#         "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
-#     )
-#     print(q.get_sibling_entities("n4sch__Class", "TaxBenefit"))
-#     # print(q.get_entities("n4sch__Class", {"n4sch__name": "PaymentMethod"}))
-#     q.close()
+if __name__ == "__main__":
+    q = KnowledgeGraph(
+        "neo4j+s://147e2688.databases.neo4j.io",
+        "neo4j",
+        "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
+    )
+    print(q.get_sibling_entities(attributes={NAME: "CreditRisk"}))
+    # print(q.get_entities("n4sch__Class", {"n4sch__name": "PaymentMethod"}))
+    q.close()
