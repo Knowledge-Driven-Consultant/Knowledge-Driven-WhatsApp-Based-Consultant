@@ -1,0 +1,16 @@
+[
+  {
+    "text": "What does a business model entail?",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "business model",
+        "start": 12,
+        "end": 20,
+        "confidence_entity": 0.5992676019668579,
+        "value": "business",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

@@ -1,0 +1,168 @@
+2021-12-14 14:10:36,971 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 14:10:36,987 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 14:10:39,191 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 14:11:00,934 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 14:11:07,721 [INFO ]  Rasa server is up and running.
+2021-12-14 14:33:45,568 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+2021-12-14 14:47:18,088 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 14:47:18,111 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 14:47:20,238 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 14:48:33,958 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 14:48:50,977 [INFO ]  Rasa server is up and running.
+2021-12-14 14:49:22,496 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+2021-12-14 15:03:18,324 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 15:03:18,366 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:03:21,454 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:04:56,525 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 15:05:32,445 [INFO ]  Rasa server is up and running.
+2021-12-14 15:13:11,465 [ERROR]  Exception occurred while handling uri: 'http://7dcd-119-160-2-66.ngrok.io/webhooks/twilio/webhook'
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 940, in handle_request
+    handler, args, kwargs, uri, name = self.router.get(request)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 411, in get
+    return self._get(request.path, request.method, "")
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 452, in _get
+    raise method_not_supported
+sanic.exceptions.MethodNotSupported: Method GET not allowed for URL /webhooks/twilio/webhook
+2021-12-14 15:13:12,261 [ERROR]  Exception occurred while handling uri: 'http://7dcd-119-160-2-66.ngrok.io/favicon.ico'
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 940, in handle_request
+    handler, args, kwargs, uri, name = self.router.get(request)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 411, in get
+    return self._get(request.path, request.method, "")
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 475, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+2021-12-14 15:14:20,745 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+2021-12-14 15:14:49,066 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 15:14:49,105 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:14:51,968 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:15:49,036 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 15:16:05,346 [INFO ]  Rasa server is up and running.
+2021-12-14 15:18:25,014 [ERROR]  Exception occurred while handling uri: 'http://c2cb-119-160-2-66.ngrok.io/favicon.ico'
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 940, in handle_request
+    handler, args, kwargs, uri, name = self.router.get(request)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 411, in get
+    return self._get(request.path, request.method, "")
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 475, in _get
+    raise NotFound("Requested URL {} not found".format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+2021-12-14 15:18:45,039 [ERROR]  Exception occurred while handling uri: 'http://c2cb-119-160-2-66.ngrok.io/webhooks/twilio/webhook'
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 940, in handle_request
+    handler, args, kwargs, uri, name = self.router.get(request)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 411, in get
+    return self._get(request.path, request.method, "")
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\router.py", line 452, in _get
+    raise method_not_supported
+sanic.exceptions.MethodNotSupported: Method GET not allowed for URL /webhooks/twilio/webhook
+2021-12-14 15:34:24,654 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+2021-12-14 15:34:45,169 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 15:34:45,191 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:34:48,280 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 15:35:37,356 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 15:36:04,223 [INFO ]  Rasa server is up and running.
+2021-12-14 19:36:13,010 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+2021-12-14 19:38:57,033 [INFO ]  Starting Rasa server on http://localhost:5005
+2021-12-14 19:38:57,077 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 19:38:59,436 [INFO ]  Loading model models\20211214-120151.tar.gz...
+2021-12-14 19:39:37,669 [WARNI]  The UnexpecTED Intent Policy is currently experimental and might change or be removed in the future 🔬 Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.
+2021-12-14 19:39:50,726 [INFO ]  Rasa server is up and running.
+2021-12-16 10:15:32,711 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\app.py", line 1167, in run
+    serve(**server_settings)
+  File "C:\Users\Naeem Ilyas\AppData\Roaming\Python\Python38\site-packages\sanic\server.py", line 920, in serve
+    loop.run_forever()
+  File "c:\python38\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "c:\python38\lib\asyncio\base_events.py", line 570, in run_forever
+    self._run_once()
+  File "c:\python38\lib\asyncio\base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 430, in select
+    self._poll(timeout)
+  File "c:\python38\lib\asyncio\windows_events.py", line 779, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt

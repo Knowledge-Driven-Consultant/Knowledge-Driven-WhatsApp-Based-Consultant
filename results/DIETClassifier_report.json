@@ -1,0 +1,48 @@
+{
+  "mutual funds": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "KeyResources": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "payment method": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "business model": {
+    "precision": 0.6666666666666666,
+    "recall": 1.0,
+    "f1-score": 0.8,
+    "support": 2,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.8888888888888888,
+    "recall": 1.0,
+    "f1-score": 0.9411764705882353,
+    "support": 8
+  },
+  "macro avg": {
+    "precision": 0.9166666666666666,
+    "recall": 1.0,
+    "f1-score": 0.95,
+    "support": 8
+  },
+  "weighted avg": {
+    "precision": 0.9166666666666666,
+    "recall": 1.0,
+    "f1-score": 0.95,
+    "support": 8
+  }
+}

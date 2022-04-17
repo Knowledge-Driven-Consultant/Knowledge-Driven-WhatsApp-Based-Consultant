@@ -1,0 +1,135 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+
+- intent: query_entities
+  examples: |
+    - What are [mutual funds](MutualFunds)?
+    - What are [equity funds](EquityFund)
+    - What are [money market funds](MoneyMarketFund)?
+    - What are [balanced funds](BalancedFund)?
+    - What are [income funds](IncomeFund)?
+    - What are [capital protected funds](CapitalProtectedFund)?
+    - What are [index funds](IndexTrackerFund)?
+    - what is meant by [liquidity risk](LiquidityRisk)?
+    - What is meant by [Market risks](MarketRisk)?
+    - What is meant by [Credit Risk](CreditRisk)?
+    - What is meant by [open ended](Open-End) [mutual funds](MutualFunds)?
+    - What is meant by [closed ended](Closed-End) [mutual funds](MutualFunds)?
+
+
+
+    
+- intent: query_attribute
+  examples: |
+    - what is [market funds](MoneyMarketFund) [risk level](risk_level)?
+
+- intent: query_relationship
+  examples: |
+
+    - Are there [risks](has_risk) involved with [Mutual funds](MutualFunds)?
+    - What are the [types](has_types) of [mutual funds](MutualFunds)?
+    - What are the [advantages](has_advantages) of [mutual funds](MutualFunds)?
+    - What are the [pros](has_advantages) of investing in [mutual funds](MutualFunds)?
+    - What are the [good things](has_advantages) about [mutual funds](MutualFunds)?
+    - What [do I get](has_advantages) by investing in [mutual funds](MutualFunds)? 
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds)?
+    - What are the [return types](has_return_types) of [mutual funds](MutualFunds)?
+    - What are some of the [factors](has) to be considered before [investing](Investment)?
+    - What are the different [ways](n4sch__SCO) to [invest](Investment) my money?
+    - How [can I](n4sch__SCO) [invest](Investment) my money?
+
+- intent: compare_entities
+  examples: |
+    - What is the difference between [equity funds](EquityFund) and [money market funds](MoneyMarketFund)?
+    - What is the difference between [income funds](IncomeFund) and [equity funds](EquityFund)?

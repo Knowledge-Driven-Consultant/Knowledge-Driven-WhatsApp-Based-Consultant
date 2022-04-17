@@ -1,0 +1,35 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: query database
+  steps:
+  - intent: query_entities
+  - action: action_query_entities
+
+- rule: query database for relationships
+  steps:
+  - intent: query_relationship
+  - action: action_query_relationship
+
+- rule: query database for attributes
+  steps:
+  - intent: query_attribute
+  - action: action_query_attribute
+
+- rule: compare entities
+  steps:
+  - intent: compare_entities
+  - action: action_compare_entities
+
+

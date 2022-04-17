@@ -1,0 +1,72 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - query_entities
+  - query_attribute
+  - query_relationship
+  - compare_entities
+
+entities:
+  - MutualFunds
+  - EquityFund
+  - MoneyMarketFund
+  - BalancedFund
+  - IncomeFund
+  - CapitalProtectedFund
+  - IndexTrackerFund
+  - LiquidityRisk
+  - MarketRisk
+  - CreditRisk
+  - has_advantages
+  - has_types
+  - has_return_types 
+  - has_risk
+  - has_categories
+  - has_return_type
+  - has
+  - n4sch__SCO
+  - Open-End
+  - Closed-End
+  - risk_level
+  - Investment
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_query_entities:
+  - text: "The available options are: Bank transfer, Cash on delivery, JazzCash or Easypaisa wallets"
+
+actions:
+  - action_query_attribute
+  - action_query_entities
+  - action_query_relationship
+  - action_compare_entities
+  
+
+session_config:
+  session_expiration_time: 100
+  carry_over_slots_to_new_session: true
