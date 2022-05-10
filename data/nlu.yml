@@ -95,7 +95,7 @@ nlu:
 - intent: query_entities
   examples: |
     - What are [mutual funds](MutualFunds)?
-    - What are [equity funds](EquityFund)
+    - What are [equity funds](EquityFund)?
     - What are [money market funds](MoneyMarketFund)?
     - What are [balanced funds](BalancedFund)?
     - What are [income funds](IncomeFund)?
@@ -106,6 +106,14 @@ nlu:
     - What is meant by [Credit Risk](CreditRisk)?
     - What is meant by [open ended](Open-End) [mutual funds](MutualFunds)?
     - What is meant by [closed ended](Closed-End) [mutual funds](MutualFunds)?
+    - What is meant by [unit holder](UnitHolder)?
+    - What is meant by [secp](SECP)?
+    - What is meant by [Securities and Exchange Commission of Pakistan](SECP)?
+    - What is meant by [Portfolio](Portfolio)?
+    - What is meant by [Shariah Compliant Fund](ShariahCompliantFund)?
+    - What is meant by [Commodity Fund](CommodityFund)?
+    - What is meant by [Transparency](Transparency)?
+
 
 
 

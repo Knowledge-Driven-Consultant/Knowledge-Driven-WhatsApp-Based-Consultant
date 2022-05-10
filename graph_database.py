@@ -186,8 +186,7 @@ class KnowledgeGraph(KnowledgeBase):
         self, entity_type="", attributes: Optional[Dict[Text, Text]] = None
     ) -> List[Dict[Text, Any]]:
         """
-        Given a relationship and an entity, get all entities that have that relationship with the given
-        entity.
+        Returns information of a specific entity
         :param entity_type: entity type
         :param attributes: any attributes of the entity (incl name)
         :param rel_type: the type (name) of relationship

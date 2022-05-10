@@ -12,24 +12,24 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: query database
-  steps:
-  - intent: query_entities
-  - action: action_query_entities
+# - rule: query database
+#   steps:
+#   - intent: query_entities
+#   - action: action_query_entities
 
-- rule: query database for relationships
-  steps:
-  - intent: query_relationship
-  - action: action_query_relationship
+# - rule: query database for relationships
+#   steps:
+#   - intent: query_relationship
+#   - action: action_query_relationship
 
-- rule: query database for attributes
-  steps:
-  - intent: query_attribute
-  - action: action_query_attribute
+# - rule: query database for attributes
+#   steps:
+#   - intent: query_attribute
+#   - action: action_query_attribute
 
-- rule: compare entities
-  steps:
-  - intent: compare_entities
-  - action: action_compare_entities
+# - rule: compare entities
+#   steps:
+#   - intent: compare_entities
+#   - action: action_compare_entities
 
 

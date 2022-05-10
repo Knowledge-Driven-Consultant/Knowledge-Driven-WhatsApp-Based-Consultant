@@ -36,6 +36,12 @@ entities:
   - Closed-End
   - risk_level
   - Investment
+  - Portfolio
+  - SECP
+  - UnitHolder
+  - ShariahCompliantFund
+  - CommodityFund
+  - Transparency
 
 responses:
   utter_greet:
@@ -57,15 +63,16 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-  utter_query_entities:
-  - text: "The available options are: Bank transfer, Cash on delivery, JazzCash or Easypaisa wallets"
+  utter_ask_entity_name:
+  - text: "Type the name of the term you want to know about!"
 
 actions:
   - action_query_attribute
   - action_query_entities
   - action_query_relationship
   - action_compare_entities
-  
+  - action_trigger_sibling
+  - action_ask_vocab  
 
 session_config:
   session_expiration_time: 100

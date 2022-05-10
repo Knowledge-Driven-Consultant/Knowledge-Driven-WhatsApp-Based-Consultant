@@ -22,4 +22,10 @@ schema = {
     "n4sch__SCO": "relationship",
     "n4sch__comment": "attribute",
     "risk_level": "attribute",
+    "Portfolio": "entity",
+    "SECP": "entity",
+    "UnitHolder": "entity",
+    "ShariahCompliantFund": "entity",
+    "CommodityFund": "entity",
+    "Transparency": "entity",
 }

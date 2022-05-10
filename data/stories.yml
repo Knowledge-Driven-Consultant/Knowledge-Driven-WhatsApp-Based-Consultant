@@ -29,22 +29,58 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: test
+
+- story: follow-up affirm
   steps:
   - intent: query_entities
   - action: action_query_entities
+  - action: action_trigger_sibling
+  - intent: affirm
+  - action: utter_ask_entity_name
+
+- story: enitity vocabs
+  steps:
+  - intent: query_entities
+  - action: action_query_entities
+  - action: action_ask_vocab
+  - intent: affirm
+  - action: utter_ask_entity_name
+
+- story: follow-up deny
+  steps:
+  - intent: query_entities
+  - action: action_query_entities
+  - action: action_trigger_sibling
+  - intent: deny
+  - action: utter_cheer_up
 
 - story: test3
   steps:
   - intent: query_relationship
   - action: action_query_relationship
+  - action: action_ask_vocab
+  - intent: affirm
+  - action: utter_ask_entity_name
 
 - story: test2
   steps:
   - intent: query_attribute
   - action: action_query_attribute
+  - action: action_ask_vocab
+  - intent: affirm
+  - action: utter_ask_entity_name
+  
 
 - story: compare entities
   steps:
   - intent: compare_entities
   - action: action_compare_entities
+  - action: action_ask_vocab
+  - intent: affirm
+  - action: utter_ask_entity_name
+
+- story: nope
+  steps:
+  - intent: deny
+  - action: utter_cheer_up
+
