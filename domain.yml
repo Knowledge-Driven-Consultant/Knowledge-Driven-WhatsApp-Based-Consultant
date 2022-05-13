@@ -42,6 +42,21 @@ entities:
   - ShariahCompliantFund
   - CommodityFund
   - Transparency
+  - EquitySecurity
+  - Bonds
+  - Stocks
+  - time_horizon
+  - return_potential
+  - Liquidity
+  - Affordability
+  - TaxCredit
+  - EasyManagement
+  - LowRisk
+  - TaxBenefit
+  - IncreasedNAV
+  - CapitalGain
+  - Dividend
+
 
 responses:
   utter_greet:

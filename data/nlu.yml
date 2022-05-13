@@ -113,6 +113,18 @@ nlu:
     - What is meant by [Shariah Compliant Fund](ShariahCompliantFund)?
     - What is meant by [Commodity Fund](CommodityFund)?
     - What is meant by [Transparency](Transparency)?
+    - What is meant by [equity securities](EquitySecurity)?
+    - What are [stocks](Stocks)?
+    - What are [bonds](Bonds)?
+    - [Liquidity](Liquidity)
+    - [Affordability](Affordability)
+    - [Tax Credit](TaxCredit)
+    - [Easy Management](EasyManagement)
+    - [Low Risk](LowRisk) 
+    - [Tax Benefit](TaxBenefit)
+    - [Increased NAV](IncreasedNAV)
+    - [Capital Gain](CapitalGain)
+    - [Dividend](Dividend)
 
 
 
@@ -121,6 +133,25 @@ nlu:
 - intent: query_attribute
   examples: |
     - what is [market funds](MoneyMarketFund) [risk level](risk_level)?
+    - what is the [risk level](risk_level) of [money market funds](MoneyMarketFund)?
+    - what is the [risk level](risk_level) of [equity funds](EquityFund)?
+    - what is the [risk level](risk_level) of [balanced funds](BalancedFund)?
+    - what is the [risk level](risk_level) of [income funds](IncomeFund)?
+    - what is the [risk level](risk_level) of [capital protected funds](CapitalProtectedFund)?
+    - what is the [risk level](risk_level) of [index funds](IndexFund)?
+    - what is the [return potential](return_potential) of [money market funds](MoneyMarketFund)?
+    - what is the [return potential](return_potential) of [equity funds](EquityFund)?
+    - what is the [return potential](return_potential) of [balanced funds](BalancedFund)?
+    - what is the [return potential](return_potential) of [income funds](IncomeFund)?
+    - what is the [return potential](return_potential)  of [capital protected funds](CapitalProtectedFund)?
+    - what is the [return potential](return_potential) of [index funds](IndexFund)?
+    - what is the [time horizon](time_horizon) of [money market funds](MoneyMarketFund)?
+    - what is the [time horizon](time_horizon) of [equity funds](EquityFund)?
+    - what is the [time horizon](time_horizon) of [balanced funds](BalancedFund)?
+    - what is the [time horizon](time_horizon) of [income funds](IncomeFund)?
+    - what is the [time horizon](time_horizon) of [capital protected funds](CapitalProtectedFund)?
+    - what is the [time horizon](time_horizon) of [index funds](IndexFund)?
+    
 
 - intent: query_relationship
   examples: |
@@ -136,6 +167,9 @@ nlu:
     - What are some of the [factors](has) to be considered before [investing](Investment)?
     - What are the different [ways](n4sch__SCO) to [invest](Investment) my money?
     - How [can I](n4sch__SCO) [invest](Investment) my money?
+    - What are the [types](has_types) of [equity securities](EquitySecurity)?
+    - What are the [types](has_types) of [Mutual funds](MutualFunds)?
+
 
 - intent: compare_entities
   examples: |
