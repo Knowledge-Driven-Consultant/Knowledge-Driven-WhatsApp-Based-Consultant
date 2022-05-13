@@ -60,7 +60,8 @@ entities:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Welcome to our Investment Consultant! I am so excited to help you learn more about investing your money! If you don't know what to ask, start with a basic query "How can I invest my money" and lets start from there!"
+    image: "https://media1.giphy.com/media/lrtPCNjE8Rdoky43VR/giphy.gif"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"

@@ -64,17 +64,27 @@ class ActionQueryEntity(Action):
             "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
         )
 
-        for entity in tracker.latest_message["entities"]:
-            if schema[entity["entity"]] == "entity":
-                entity_name = entity["entity"]
-        # print(tracker.latest_message)
-        value = q.get_entities(attributes={"n4sch__name": entity_name})
-        print(value)
-        if value is not None:
-            dispatcher.utter_message(f"'{value[0]['n4sch__comment']}'.")
+        if tracker.latest_message["entities"]:
+            for entity in tracker.latest_message["entities"]:
+                if schema[entity["entity"]] == "entity":
+                    entity_name = entity["entity"]
+            value = q.get_entities(attributes={"n4sch__name": entity_name})
+            print(value)
+            if value is not None:
+                dispatcher.utter_message(f"{value[0]['n4sch__comment']}.")
+            else:
+                dispatcher.utter_message(
+                    f"Did not found a valid value for entity '{entity_name}'."
+                )
+                dispatcher.utter_image_url(
+                    "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
+                )
         else:
             dispatcher.utter_message(
-                f"Did not found a valid value for entity '{entity_name}'."
+                "We cannot find what you are looking for, try something else."
+            )
+            dispatcher.utter_image_url(
+                "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
             )
 
         # FollowupAction("action_trigger_sibling")
@@ -99,30 +109,40 @@ class ActionQueryRelationship(Action):
             "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
         )
 
-        for entity in tracker.latest_message["entities"]:
-            if schema[entity["entity"]] == "entity":
-                entity_name = entity["entity"]
-            if schema[entity["entity"]] == "relationship":
-                relation_name = entity["entity"]
-                relation_value = entity["value"]
+        if tracker.latest_message["entities"]:
+            for entity in tracker.latest_message["entities"]:
+                if schema[entity["entity"]] == "entity":
+                    entity_name = entity["entity"]
+                if schema[entity["entity"]] == "relationship":
+                    relation_name = entity["entity"]
+                    relation_value = entity["value"]
 
-        value = q.get_direct_relation_of(
-            rel_type=relation_name, attributes={"n4sch__name": entity_name}
-        )
-        print(value)
-        text = f"These are the {relation_value}:\n"
-
-        if value is not None:
-            for node in value:
-                text = text + node["n4sch__label"] + "\n"
-            text = (
-                text
-                + f"If you want to know about any specific {relation_value}, type its name!"
+            value = q.get_direct_relation_of(
+                rel_type=relation_name, attributes={"n4sch__name": entity_name}
             )
-            dispatcher.utter_message(f"{text}")
+            text = f"Here they are:\n"
+
+            if value is not None:
+                for node in value:
+                    text = text + node["n4sch__label"] + "\n"
+                text = (
+                    text
+                    + f"If you want to know about any specific term, type its name!"
+                )
+                dispatcher.utter_message(f"{text}")
+            else:
+                dispatcher.utter_message(
+                    f"Did not found a valid value for entity '{entity_name}'."
+                )
+                dispatcher.utter_image_url(
+                    "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
+                )
         else:
             dispatcher.utter_message(
-                f"Did not found a valid value for entity '{entity_name}'."
+                "We cannot find what you are looking for, try something else."
+            )
+            dispatcher.utter_image_url(
+                "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
             )
 
         return []
@@ -147,19 +167,31 @@ class ActionQueryAttribute(Action):
             "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
         )
 
-        for entity in tracker.latest_message["entities"]:
-            if schema[entity["entity"]] == "entity":
-                entity_name = entity["entity"]
-            if schema[entity["entity"]] == "attribute":
-                attribute = entity["entity"]
-        print(tracker.latest_message)
-        value = q.get_attribute_of(entity_name, attribute)
-        print(value)
-        if value is not None:
-            dispatcher.utter_message(f"'{value[0]}'.")
+        if tracker.latest_message["entities"]:
+
+            for entity in tracker.latest_message["entities"]:
+                if schema[entity["entity"]] == "entity":
+                    entity_name = entity["entity"]
+                if schema[entity["entity"]] == "attribute":
+                    attribute = entity["entity"]
+            value = q.get_attribute_of(entity_name, attribute)
+            print(value)
+            if value is not None:
+                dispatcher.utter_message(f"{value[0]}.")
+
+            else:
+                dispatcher.utter_message(
+                    f"Did not found a valid value for entity '{entity_name}'."
+                )
+                dispatcher.utter_image_url(
+                    "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
+                )
         else:
             dispatcher.utter_message(
-                f"Did not found a valid value for entity '{entity_name}'."
+                "We cannot find what you are looking for, try something else."
+            )
+            dispatcher.utter_image_url(
+                "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
             )
 
         return []
@@ -182,9 +214,18 @@ class ActionCompareEntities(Action):
             "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
         )
 
-        for entity in tracker.latest_message["entities"]:
-            value = q.get_entities(attributes={"n4sch__name": entity["entity"]})
-            dispatcher.utter_message(get_properties_from_entity(value[0]))
+        if tracker.latest_message["entities"]:
+            for entity in tracker.latest_message["entities"]:
+                value = q.get_entities(attributes={"n4sch__name": entity["entity"]})
+                dispatcher.utter_message(get_properties_from_entity(value[0]))
+
+        else:
+            dispatcher.utter_message(
+                "We cannot find what you are looking for, try something else."
+            )
+            dispatcher.utter_image_url(
+                "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
+            )
 
         return []
 
@@ -221,8 +262,6 @@ class ActionTriggerSiblings(Action):
             print(final)
 
             dispatcher.utter_message(f"{final}")
-        else:
-            dispatcher.utter_message("val none")
 
         return []
 
@@ -265,7 +304,5 @@ class ActionAskVocab(Action):
                 print(final)
 
                 dispatcher.utter_message(f"{final}")
-        else:
-            dispatcher.utter_message("val none")
 
         return []
