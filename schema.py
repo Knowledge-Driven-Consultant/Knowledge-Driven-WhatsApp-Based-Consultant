@@ -44,4 +44,11 @@ schema = {
     "IncreasedNAV": "entity",
     "CapitalGain": "entity",
     "Dividend": "entity",
+    "high": "attribute_value",
+    "low": "attribute_value",
+    "recommended": "attribute_value",
+    "non-recommended": "attribute_value",
+    "long": "attribute_value",
+    "for_new_investors": "attribute",
+    "capital_appreciation": "attribute",
 }

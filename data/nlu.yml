@@ -175,3 +175,27 @@ nlu:
   examples: |
     - What is the difference between [equity funds](EquityFund) and [money market funds](MoneyMarketFund)?
     - What is the difference between [income funds](IncomeFund) and [equity funds](EquityFund)?
+    - 
+
+- intent: match_entities
+  examples: |
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) with [high](high) [risk](risk_level)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) with [low](low) [risk](risk_level)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) with [low](low) [risk](return_potential)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) with [high](high) [risk](return_potential)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) with [long](long) [time horizon](time_horizon)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) that are [recommended](recommended) for [investors](for_new_investors)?
+    - What are the [categories](has_categories) of [mutual funds](MutualFunds) that are [non-recommended](non-recommended) for [investors](for_new_investors)?
+
+- intent: compare_attributes
+  examples: |
+    - What is the difference in [risk](risk_level) of [money market fund](MoneyMarketFund) and [income fund](IncomeFund)?
+    - What is the difference in [risk](risk_level) of [money market fund](MoneyMarketFund) and [equity fund](EquityFund)?
+    - What is the difference in [risk](risk_level) of [money market fund](MoneyMarketFund) and [index fund](IndexFund)?
+    - What is the difference in [capital appreciation](capital_appreciation) of [money market fund](MoneyMarketFund) and [income fund](IncomeFund)?
+    - What is the difference in [capital appreciation](capital_appreciation) of [money market fund](MoneyMarketFund) and [equity fund](EquityFund)?
+    - What is the difference in [capital appreciation](capital_appreciation) of [money market fund](MoneyMarketFund) and [index fund](IndexFund)?
+    - What is the difference in [return potential](return_potential) of [money market fund](MoneyMarketFund) and [income fund](IncomeFund)?
+    - What is the difference in [return potential](return_potential) of [money market fund](MoneyMarketFund) and [equity fund](EquityFund)?
+    - What is the difference in [time horizon](time_horizon) of [commodity fund](CommodityFund) and [equity fund](EquityFund)?
+    - What is the difference in [time horizon](time_horizon) of [commodity fund](CommodityFund) and [index fund](IndexFund)?

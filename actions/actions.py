@@ -306,3 +306,92 @@ class ActionAskVocab(Action):
                 dispatcher.utter_message(f"{final}")
 
         return []
+
+
+class ActionCompareAttribute(Action):
+    def name(self) -> Text:
+        return "action_compare_attributes"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        q = KnowledgeGraph(
+            "neo4j+s://147e2688.databases.neo4j.io",
+            "neo4j",
+            "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
+        )
+
+        if tracker.latest_message["entities"]:
+            entities = {}
+            for entity in tracker.latest_message["entities"]:
+                if schema[entity["entity"]] == "entity":
+                    entities[entity["entity"]] = "none"
+                if schema[entity["entity"]] == "attribute":
+                    attribute = entity["entity"]
+
+            print(entities)
+            text = ""
+            for key in entities:
+                value = q.get_attribute_of(key, attribute)
+                text = (
+                    text + f'The {attribute.replace("_"," ")} of {key} is {value[0]} \n'
+                )
+
+            dispatcher.utter_message(text)
+
+        else:
+            dispatcher.utter_message(
+                "We cannot find what you are looking for, try something else."
+            )
+            dispatcher.utter_image_url(
+                "https://i.gifer.com/origin/d3/d3137e9b40af2f14927c8282cb29ae2e_w200.gif"
+            )
+
+        return []
+
+
+class ActionMatchEntities(Action):
+    def name(self) -> Text:
+        return "action_match_entities"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        q = KnowledgeGraph(
+            "neo4j+s://147e2688.databases.neo4j.io",
+            "neo4j",
+            "mSVGV6yUNTVmSi0_8uyt6psAnd7c5zOhUWMGvZHr0cg",
+        )
+
+        if tracker.latest_message["entities"]:
+            for entity in tracker.latest_message["entities"]:
+                if schema[entity["entity"]] == "entity":
+                    entity_name = entity["entity"]
+                if schema[entity["entity"]] == "attribute":
+                    attribute = entity["entity"]
+                if schema[entity["entity"]] == "relationship":
+                    relation_name = entity["entity"]
+                    relation_value = entity["value"]
+                if schema[entity["entity"]] == "attribute_value":
+                    attribute_value = entity["entity"]
+
+        value = q.get_direct_relation_of(
+            rel_type=relation_name, attributes={"n4sch__name": entity_name}
+        )
+
+        text = f'Following have {attribute.replace("_"," ")} {attribute}\n'
+        for ent in value:
+            if ent[attribute] == attribute_value:
+                text += ent["n4sch__label"] + "\n"
+
+        dispatcher.utter_message(text)
+
+        return []

@@ -12,6 +12,8 @@ intents:
   - query_attribute
   - query_relationship
   - compare_entities
+  - match_entities
+  - compare_attributes
 
 entities:
   - MutualFunds
@@ -56,6 +58,13 @@ entities:
   - IncreasedNAV
   - CapitalGain
   - Dividend
+  - high
+  - low
+  - recommended
+  - non-recommended
+  - capital_appreciation
+  - for_new_investors
+  - long
 
 
 responses:
@@ -89,6 +98,8 @@ actions:
   - action_compare_entities
   - action_trigger_sibling
   - action_ask_vocab  
+  - action_compare_attributes
+  - action_match_entities
 
 session_config:
   session_expiration_time: 100

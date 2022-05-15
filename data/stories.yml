@@ -84,3 +84,15 @@ stories:
   - intent: deny
   - action: utter_cheer_up
 
+- story: match entities
+  steps:
+  - intent: match_entities
+  - action: action_match_entities
+
+- story: compare attributes
+  steps:
+  - intent: compare_attributes
+  - action: action_compare_attributes
+
+
+
